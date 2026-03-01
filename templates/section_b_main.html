@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Section B – Student Related Activities</h2>
+
+<div class="card-container">
+
+    <div class="card-box">
+        <h3>Feedback (20 Marks)</h3>
+        <p>Total: {{ feedback }}</p>
+        <a href="/section-b/feedback" class="btn">Enter Data</a>
+    </div>
+
+    <div class="card-box">
+        <h3>Result (10 Marks)</h3>
+        <p>Total: {{ result }}</p>
+        <a href="/section-b/result" class="btn">Enter Data</a>
+    </div>
+
+    <div class="card-box">
+        <h3>Mentoring (10 Marks)</h3>
+        <p>Total: {{ mentoring }}</p>
+        <a href="/section-b/mentoring" class="btn">Enter Data</a>
+    </div>
+
+    <div class="card-box">
+        <h3>Records (50 Marks)</h3>
+        <p>Total: {{ records }}</p>
+        <a href="/section-b/records" class="btn">Enter Data</a>
+    </div>
+
+</div>
+
+<br>
+
+<div class="form-card" style="margin-top:30px;">
+    <h3 style="text-align:center;">
+        Grand Total: {{ grand_total }} / 100
+    </h3>
+</div>
+
+<br><br>
+
+<a href="/section-a" style="text-decoration:none;">
+    <button type="button"
+            style="background:#2c3e50; color:white; padding:10px 15px;">
+        ← Back to Section A
+    </button>
+</a>
+
+&nbsp;&nbsp;
+
+<a href="/section-c" style="text-decoration:none;">
+    <button type="button"
+            style="background:green; color:white; padding:10px 15px;">
+        Proceed to Section C →
+    </button>
+</a>
+
+
+{% endblock %}

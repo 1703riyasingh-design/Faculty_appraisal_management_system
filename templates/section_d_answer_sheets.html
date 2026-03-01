@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container-card">
+
+<h3>Answer Sheets Valued (10 Marks)</h3>
+
+<form method="post">
+    <label>Odd Semester Copies:</label>
+    <input type="number" name="odd" min="0" required>
+
+    <label>Even Semester Copies:</label>
+    <input type="number" name="even" min="0" required>
+
+    <button type="submit">Save Record</button>
+</form>
+
+<hr>
+
+<h4>Saved Records</h4>
+
+{% if records %}
+<table>
+<tr>
+    <th>Odd</th>
+    <th>Even</th>
+    <th>Marks</th>
+    <th>Action</th>
+</tr>
+
+{% for row in records %}
+<tr>
+    <td>{{ row.odd }}</td>
+    <td>{{ row.even }}</td>
+    <td>{{ row.marks }}</td>
+    <td>
+        <a href="/delete-answer-sheet/{{ row.id }}"
+           class="delete-btn"
+           onclick="return confirm('Delete this entry?')">
+           Delete
+        </a>
+    </td>
+</tr>
+{% endfor %}
+</table>
+{% else %}
+<p style="text-align:center;">No records yet.</p>
+{% endif %}
+
+<div class="nav-buttons">
+    <a href="/section-d/invigilation">← Back</a>
+    <a href="/section-d/activity">Next →</a>
+</div>
+
+</div>
+
+{% endblock %}
+
+

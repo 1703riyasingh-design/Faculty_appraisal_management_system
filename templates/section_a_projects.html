@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Section A (ii) – Student Projects (Max 20 Marks)</h2>
+
+<div style="margin-bottom:20px;">
+    <strong>Total Marks:</strong> {{ total }} / 20
+    <div style="background:#ddd; height:20px; width:100%; margin-top:5px;">
+        <div style="
+            background:#34495e;
+            height:20px;
+            width:{{ (total/20)*100 }}%;
+            color:white;
+            text-align:center;">
+            {{ total }}
+        </div>
+    </div>
+</div>
+
+<div class="form-card">
+<form method="post">
+
+    <label>B.Tech Projects</label>
+    <input type="number" name="btech"
+           value="{{ data.btech if data else 0 }}" min="0">
+
+    <label>M.Tech Projects</label>
+    <input type="number" name="mtech"
+           value="{{ data.mtech if data else 0 }}" min="0">
+
+    <label>MCA / MBA Projects</label>
+    <input type="number" name="mca_mba"
+           value="{{ data.mca_mba if data else 0 }}" min="0">
+
+    <label>Papers Published by UG/PG Students</label>
+    <input type="number" name="papers"
+           value="{{ data.papers if data else 0 }}" min="0">
+
+    <br><br>
+    <button type="submit">Save Projects</button>
+
+</form>
+</div>
+
+<br>
+
+{% if total > 0 %}
+
+<!-- Go to Section A Main -->
+<a href="/section-a">
+    <button type="button"
+            style="background:#2c3e50; color:white; padding:10px 15px;">
+        ← Back to Section A Main
+    </button>
+</a>
+
+&nbsp;&nbsp;
+
+<!-- Proceed to Section B -->
+<a href="/section-b">
+    <button type="button"
+            style="background:green; color:white; padding:10px 15px;">
+        Proceed to Section B →
+    </button>
+</a>
+
+<br><br>
+
+<!-- Delete Button -->
+<a href="/delete-projects"
+   onclick="return confirm('Are you sure you want to delete all project data?')">
+    <button type="button"
+            style="background:red; color:white; padding:8px 12px;">
+        ❌ Delete Projects Data
+    </button>
+</a>
+
+{% endif %}
+
+
+{% endblock %}
+

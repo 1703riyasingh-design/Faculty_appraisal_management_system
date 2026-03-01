@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="form-card">
+    <h3 style="text-align:center;">
+        Section C (v) – Research Publications (20 Marks)
+    </h3>
+
+    <form method="post">
+
+        <div class="form-group">
+            <label>Title of Paper</label>
+            <input type="text" name="title" required>
+        </div>
+
+        <div class="form-group">
+            <label>Co-Author (if any)</label>
+            <input type="text" name="co_author">
+        </div>
+
+        <div class="form-group">
+            <label>Journal Name / ISSN</label>
+            <input type="text" name="journal_name" required>
+        </div>
+
+        <div class="form-group">
+            <label>Category</label>
+            <select name="category" required>
+                <option value="">Select</option>
+                <option>Category A (Web of Science)</option>
+                <option>Category B (Scopus)</option>
+                <option>Category C (Other Journal)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Volume / Issue No.</label>
+            <input type="text" name="volume_issue">
+        </div>
+
+        <div class="form-group">
+            <label>Citation Details (Scopus/Web of Science/Google Scholar)</label>
+            <textarea name="citation_details" rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Marks (0–20)</label>
+            <input type="number" name="marks" min="0" max="20" required>
+        </div>
+
+        <button type="submit">Save Publication</button>
+
+    </form>
+</div>
+
+{% if publication_data %}
+<hr>
+<h4>Saved Publications</h4>
+
+<table border="1" cellpadding="8">
+<tr>
+<th>Title</th>
+<th>Journal</th>
+<th>Category</th>
+<th>Marks</th>
+<th>Action</th>
+</tr>
+
+{% for row in publication_data %}
+<tr>
+<td>{{ row.title }}</td>
+<td>{{ row.journal_name }}</td>
+<td>{{ row.category }}</td>
+<td>{{ row.marks }}</td>
+<td>
+<form action="/delete-publication/{{ row.id }}" method="post">
+<button style="background:red;color:white;">
+Delete
+</button>
+</form>
+</td>
+</tr>
+{% endfor %}
+</table>
+{% endif %}
+
+<br>
+
+<a href="/section-c/research">
+<button type="button">← Back</button>
+</a>
+
+<a href="/section-c">
+<button type="button" style="background:green;color:white;">
+Finish →
+</button>
+</a>
+
+
+{% endblock %}

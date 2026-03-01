@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Lab Development (15 Marks)</h3>
+
+<form method="post">
+    <label>Initiative Details</label>
+    <textarea name="initiative" required></textarea>
+
+    <label>Marks (0–15)</label>
+    <input type="number" name="marks" min="0" max="15" required>
+
+    <button type="submit">Save</button>
+</form>
+{% if lab_data %}
+<hr>
+<h4>Saved Lab Entries</h4>
+<table border="1" cellpadding="8">
+<tr>
+<th>Initiative</th>
+<th>Marks</th>
+<th>Action</th>
+</tr>
+
+{% for row in lab_data %}
+<tr>
+<td>{{ row.initiative }}</td>
+<td>{{ row.marks }}</td>
+<td>
+<form action="/delete-lab/{{ row.id }}" method="post">
+<button style="background:red;color:white;">Delete</button>
+</form>
+</td>
+</tr>
+{% endfor %}
+</table>
+{% endif %}
+
+<br>
+<a href="/section-c">
+<button type="button">← Back to Section C</button>
+</a>
+
+
+{% endblock %}

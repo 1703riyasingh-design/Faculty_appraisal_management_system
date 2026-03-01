@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Section D – Institute Activity (35 Marks)</h2>
+
+<div class="card-container">
+
+    <div class="card">
+        <h3>Invigilation Duty (10)</h3>
+        <p>Total: {{ invigilation }}</p>
+        <a href="/section-d/invigilation">Enter Data</a>
+    </div>
+
+    <div class="card">
+        <h3>Answer Sheets Valued (10)</h3>
+        <p>Total: {{ answer }}</p>
+        <a href="/section-d/answer-sheets">Enter Data</a>
+    </div>
+
+    <div class="card">
+        <h3>Institutional Contribution (15)</h3>
+        <p>Total: {{ activity }}</p>
+        <a href="/section-d/activity">Enter Data</a>
+    </div>
+
+</div>
+
+<h3>Grand Total: {{ grand_total }} / 35</h3>
+
+<a href="/section-e">
+<button type="button"
+        style="background:green;color:white;">
+Proceed to next section →
+</button>
+</a> 
+{% endblock %}

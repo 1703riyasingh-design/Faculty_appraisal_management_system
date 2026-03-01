@@ -1,0 +1,138 @@
+<style>
+.container {
+    width: 80%;
+    margin: auto;
+    font-family: Arial;
+}
+
+.title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.info {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.total-row {
+    font-weight: bold;
+    background-color: #e6e6e6;
+}
+
+.remark-box {
+    margin-top: 30px;
+}
+</style>
+
+
+<div class="container">
+
+<div class="title">Bhilai Institute of Technology, Durg</div>
+<div class="subtitle">ANNUAL PERFORMANCE APPRAISAL</div>
+
+<div class="info">
+<b>Name of Faculty:</b> {{ data.name }}
+</div>
+
+<h4>Points Obtained</h4>
+
+<table>
+<tr>
+    <th>Section</th>
+    <th>Marks Obtained</th>
+</tr>
+
+<tr><td>Part A (Teaching Process)</td><td>{{ data.teaching_total or 0 }}</td></tr>
+<tr><td>Part B (Student Related Activities)</td><td>{{ data.student_total or 0 }}</td></tr>
+<tr><td>Part C (Research & Publication)</td><td>{{ data.research_total or 0 }}</td></tr>
+<tr><td>Part D (Academic Development)</td><td>{{ data.academic_total or 0 }}</td></tr>
+<tr><td>Part E (Institutional Contribution)</td><td>{{ data.institution_total or 0 }}</td></tr>
+<tr><td>Part F (HOD)</td><td>{{ data.hod_total or 0 }}</td></tr>
+
+<tr class="total-row">
+    <td>Total Points</td>
+    <td>{{ data.total_marks }}</td>
+</tr>
+
+<tr class="total-row">
+    <td>Percentage</td>
+    <td>{{ data.percentage }} %</td>
+</tr>
+</table>
+
+<br>
+
+<b>HOD Remark:</b><br>
+{{ data.hod_remark }}
+
+<hr>
+
+<form action="{{ url_for('principal_review', id=data.id) }}" method="POST">
+
+<label><b>Compliance with norms</b></label><br>
+<textarea name="compliance" required style="width:400px;height:60px;"></textarea>
+
+<br><br>
+
+<label><b>Overall Appraisal</b></label><br>
+<select name="appraisal" required>
+<option value="Outstanding">Outstanding</option>
+<option value="Excellent">Excellent</option>
+<option value="Good">Good</option>
+<option value="Satisfactory">Satisfactory</option>
+<option value="Needs Improvement">Needs Improvement</option>
+</select>
+
+<br><br>
+
+<label><b>Principal Remark</b></label><br>
+<textarea name="principal_remark" required style="width:400px;height:80px;"></textarea>
+
+<br><br>
+
+<button type="submit"
+style="background:green;color:white;padding:8px 15px;border:none;border-radius:5px;">
+Final Approve
+</button>
+
+</form>
+
+<br>
+
+<form action="{{ url_for('principal_reject', id=data.id) }}" method="POST">
+<button type="submit"
+style="background:red;color:white;padding:8px 15px;border:none;border-radius:5px;">
+Reject
+</button>
+</form>
+
+</div>
+
+
+
+
+

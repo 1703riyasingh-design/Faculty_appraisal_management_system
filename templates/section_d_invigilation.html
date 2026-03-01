@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Invigilation Duty (10 Marks)</h3>
+
+<form method="post">
+    <label>Odd Semester Duties:</label>
+    <input type="number" name="odd" required>
+
+    <label>Even Semester Duties:</label>
+    <input type="number" name="even" required>
+
+    <button type="submit">Save</button>
+</form>
+
+<hr>
+
+<h4>Saved Records</h4>
+
+{% if records %}
+<table border="1" cellpadding="8">
+<tr>
+<th>Odd</th>
+<th>Even</th>
+<th>Marks</th>
+<th>Action</th>
+</tr>
+
+{% for row in records %}
+<tr>
+<td>{{ row.odd }}</td>
+<td>{{ row.even }}</td>
+<td>{{ row.marks }}</td>
+<td>
+<a href="/delete-invigilation/{{ row.id }}"
+onclick="return confirm('Delete?')">Delete</a>
+</td>
+</tr>
+{% endfor %}
+</table>
+{% else %}
+<p>No records yet.</p>
+{% endif %}
+
+<br>
+<a href="/section-d">← Back</a>
+<a href="/section-d/answer-sheets">Next →</a>
+
+{% endblock %}
+
+

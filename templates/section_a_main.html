@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Section A – Teaching Process{% endblock %}
+
+{% block content %}
+
+<h2>Section A – Teaching Process (100 Marks)</h2>
+
+<div class="card-container">
+
+    <div class="card-box">
+        <h3>A1 – Workload (80 Marks)</h3>
+        <p>Subjects, classes & teaching contribution</p>
+        <a href="/section-a/workload" class="btn">Open A1</a>
+    </div>
+
+    <div class="card-box">
+        <h3>A2 – Projects (20 Marks)</h3>
+        <p>Student projects & publications</p>
+        <a href="/section-a/projects" class="btn">Open A2</a>
+    </div>
+    
+    <div class="form-card">
+    <h3 style="text-align:center;">Section A – Total Summary</h3>
+
+    <p><strong>Workload Total:</strong> {{ workload_total }}</p>
+    <p><strong>Projects Total:</strong> {{ project_total }}</p>
+    <hr>
+    <h4>Section A Total: {{ section_total }}</h4>
+</div>
+
+
+</div>
+
+{% endblock %}

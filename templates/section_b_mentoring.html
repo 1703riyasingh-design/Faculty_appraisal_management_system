@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="form-card">
+    <h3 style="text-align:center;">Section B (iii) – Mentoring System (10 Marks)</h3>
+
+    <form method="post">
+
+        <div class="form-group">
+            <label>Mentoring Details</label>
+            <input type="text" name="mentoring_details" required>
+        </div>
+
+        <div class="form-group">
+            <label>Marks (0–10)</label>
+            <input type="number" name="marks" min="0" max="10" required>
+        </div>
+
+        <button type="submit">Save Mentoring</button>
+
+    </form>
+</div>
+{% if mentoring_data %}
+<hr>
+<h4>Saved Mentoring Records</h4>
+
+<table border="1" cellpadding="8">
+<tr>
+<th>Details</th>
+<th>Marks</th>
+<th>Action</th>
+</tr>
+
+{% for row in mentoring_data %}
+<tr>
+<td>{{ row.mentoring_details }}</td>
+<td>{{ row.marks }}</td>
+<td>
+<form action="/delete-mentoring-row/{{ row.id }}" method="post">
+<button type="submit" style="background:red;color:white;">
+Delete
+</button>
+</form>
+</td>
+</tr>
+{% endfor %}
+</table>
+{% endif %}
+
+
+<form action="/delete-mentoring" method="post"
+      onsubmit="return confirm('Delete mentoring data?')">
+    <button type="submit" style="background:red;color:white;">
+        ❌ Delete
+    </button>
+</form>
+
+
+{% endblock %}

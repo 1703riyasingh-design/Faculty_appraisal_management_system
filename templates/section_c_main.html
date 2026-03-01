@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Section C – Departmental Activities (95 Marks)</h2>
+
+<div class="card-container">
+
+    <div class="card">
+        <h3>Lab Development (15)</h3>
+        <p>Total: {{ lab }}</p>
+        <a href="/section-c/lab">Enter Data</a>
+    </div>
+
+    <div class="card">
+        <h3>Department Activity (25)</h3>
+        <p>Total: {{ dept }}</p>
+        <a href="/section-c/department">Enter Data</a>
+    </div>
+
+    <div class="card">
+        <h3>FDP/SDP (20)</h3>
+        <p>Total: {{ fdp }}</p>
+        <a href="/section-c/fdp">Enter Data</a>
+    </div>
+
+    <div class="card">
+        <h3>Research Guidance (15)</h3>
+        <p>Total: {{ research }}</p>
+        <a href="/section-c/research">Enter Data</a>
+    </div>
+
+    <div class="card">
+        <h3>Publications (20)</h3>
+        <p>Total: {{ publication }}</p>
+        <a href="/section-c/publication">Enter Data</a>
+    </div>
+
+</div>
+
+<h2>Grand Total: {{ grand_total }} / 95</h2>
+
+
+<br><br>
+
+<a href="/section-b">
+<button type="button">← Back to Section B</button>
+</a>
+
+&nbsp;&nbsp;
+
+<a href="/section-d">
+<button type="button"
+        style="background:green;color:white;">
+Proceed to next section →
+</button>
+</a>
+
+
+{% endblock %}

@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="form-card">
+    <h3 style="text-align:center;">Section B (ii) – Students Result (10 Marks)</h3>
+
+    <form method="post">
+
+        <div class="form-group">
+            <label>Course</label>
+            <input type="text" name="course" required>
+        </div>
+
+        <div class="form-group">
+            <label>Semester & Section</label>
+            <input type="text" name="semester_section" required>
+        </div>
+
+        <div class="form-group">
+            <label>Subject Name</label>
+            <input type="text" name="subject_name" required>
+        </div>
+
+        <div class="form-group">
+            <label>Session Type</label>
+            <select name="session_type" required>
+                <option value="Odd">Odd</option>
+                <option value="Even">Even</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Result Marks (0–10)</label>
+            <input type="number" name="result_percentage" min="0" max="10" step="0.01" required>
+        </div>
+
+        <button type="submit">Save Result</button>
+
+    </form>
+</div>
+<form action="/delete-result" method="post"
+      onsubmit="return confirm('Delete all result entries?')">
+    <button type="submit" style="background:red;color:white;">
+        ❌ Delete
+    </button>
+</form>
+
+{% if result_data %}
+<hr>
+<h4>Saved Result Entries</h4>
+
+<table border="1" cellpadding="8">
+<tr>
+<th>Course</th>
+<th>Sem/Section</th>
+<th>Subject</th>
+<th>Marks</th>
+<th>Session</th>
+<th>Action</th>
+</tr>
+
+{% for row in result_data %}
+<tr>
+<td>{{ row.course }}</td>
+<td>{{ row.semester_section }}</td>
+<td>{{ row.subject_name }}</td>
+<td>{{ row.result_percentage }}</td>
+<td>{{ row.session_type }}</td>
+<td>
+<form action="/delete-result-row/{{ row.id }}" method="post">
+<button type="submit" style="background:red;color:white;">
+Delete
+</button>
+</form>
+</td>
+</tr>
+{% endfor %}
+</table>
+{% endif %}
+{% if result_data %}
+<hr>
+<h4>Saved Result Entries</h4>
+
+<table border="1" cellpadding="8">
+<tr>
+<th>Course</th>
+<th>Sem/Section</th>
+<th>Subject</th>
+<th>Marks</th>
+<th>Session</th>
+<th>Action</th>
+</tr>
+
+{% for row in result_data %}
+<tr>
+<td>{{ row.course }}</td>
+<td>{{ row.semester_section }}</td>
+<td>{{ row.subject_name }}</td>
+<td>{{ row.result_percentage }}</td>
+<td>{{ row.session_type }}</td>
+<td>
+<form action="/delete-result-row/{{ row.id }}" method="post">
+<button type="submit" style="background:red;color:white;">
+Delete
+</button>
+</form>
+</td>
+</tr>
+{% endfor %}
+</table>
+{% endif %}
+
+
+{% endblock %}

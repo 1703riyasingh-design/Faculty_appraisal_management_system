@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="form-card">
+    <h3 style="text-align:center;">
+        Section C (iv) – Research Guidance (15 Marks)
+    </h3>
+
+    <form method="post">
+
+        <div class="form-group">
+            <label>Name of Scholar</label>
+            <input type="text" name="scholar_name" required>
+        </div>
+
+        <div class="form-group">
+            <label>Date of Registration</label>
+            <input type="date" name="registration_date" required>
+        </div>
+
+        <div class="form-group">
+            <label>Supervisor / Co-Supervisor</label>
+            <select name="role" required>
+                <option value="">Select</option>
+                <option>Supervisor</option>
+                <option>Co-Supervisor</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Status</label>
+            <select name="status" required>
+                <option value="">Select</option>
+                <option>Ongoing</option>
+                <option>Submitted</option>
+                <option>Awarded</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Award Date (if awarded)</label>
+            <input type="date" name="award_date">
+        </div>
+
+        <div class="form-group">
+            <label>Marks (0–15)</label>
+            <input type="number" name="marks" min="0" max="15" required>
+        </div>
+
+        <button type="submit">Save Research</button>
+
+    </form>
+</div>
+
+{% if research_data %}
+<hr>
+<h4>Saved Research Guidance</h4>
+
+<table border="1" cellpadding="8">
+<tr>
+<th>Scholar</th>
+<th>Status</th>
+<th>Role</th>
+<th>Marks</th>
+<th>Action</th>
+</tr>
+
+{% for row in research_data %}
+<tr>
+<td>{{ row.scholar_name }}</td>
+<td>{{ row.status }}</td>
+<td>{{ row.role }}</td>
+<td>{{ row.marks }}</td>
+<td>
+<form action="/delete-research/{{ row.id }}" method="post">
+<button style="background:red;color:white;">
+Delete
+</button>
+</form>
+</td>
+</tr>
+{% endfor %}
+</table>
+{% endif %}
+
+<br>
+
+<a href="/section-c/fdp">
+<button type="button">← Back</button>
+</a>
+
+<a href="/section-c/publication">
+<button type="button" style="background:green;color:white;">
+Next →
+</button>
+</a>
+
+
+{% endblock %}

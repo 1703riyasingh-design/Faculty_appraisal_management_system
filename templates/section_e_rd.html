@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="form-card">
+    <h3>R&D Project Details (5 Marks)</h3>
+
+    <form method="post">
+
+        <div class="form-group">
+            <label>Project Title</label>
+            <input type="text" name="title" required>
+        </div>
+
+        <div class="form-group">
+            <label>Amount Released</label>
+            <input type="number" step="0.01" name="amount_released" required>
+        </div>
+
+        <button type="submit">Save</button>
+
+    </form>
+</div>
+
+{% endblock %}

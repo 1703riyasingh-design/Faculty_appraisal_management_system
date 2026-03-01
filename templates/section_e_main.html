@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Section E – Contribution to Society (40 Marks)</h2>
+
+<div class="card">
+    <h3>AICTE / SWAYAM (20)</h3>
+    <p>Total: {{ swayam }}</p>
+    <a href="/section-e/swayam">Enter Data</a>
+</div>
+
+<div class="card">
+    <h3>Other AICTE Initiative (5)</h3>
+    <p>Total: {{ other }}</p>
+    <a href="/section-e/other">Enter Data</a>
+</div>
+
+<div class="card">
+    <h3>R&D Project (5)</h3>
+    <p>Total: {{ rd }}</p>
+    <a href="/section-e/rd">Enter Data</a>
+</div>
+
+<div class="card">
+    <h3>Books / Monograph (5)</h3>
+    <p>Total: {{ books }}</p>
+    <a href="/section-e/books">Enter Data</a>
+</div>
+
+<div class="card">
+    <h3>Consultancy / Patent (5)</h3>
+    <p>Total: {{ consultancy }}</p>
+    <a href="/section-e/consultancy">Enter Data</a>
+</div>
+
+<h2>Grand Total: {{ grand_total }} / 40</h2>
+
+<div class="nav-buttons">
+    <a href="/section-d/answer-sheets">← Back</a>
+    <a href="/faculty_dashboard">Finish →</a>
+</div>
+
+{% endblock %}

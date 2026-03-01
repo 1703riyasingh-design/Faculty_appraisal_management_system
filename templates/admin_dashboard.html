@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Admin Panel – Faculty Performance</h2>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Email</th>
+        <th>Grand Total</th>
+        <th>Grade</th>
+    </tr>
+<a href="/acr-list">View ACR Requests</a>
+
+    {% for faculty in faculty_data %}
+    <tr>
+        <td>{{ faculty.email }}</td>
+        <td>{{ faculty.total }}</td>
+        <td>{{ faculty.grade }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}

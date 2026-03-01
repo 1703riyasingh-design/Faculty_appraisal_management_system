@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="form-card">
+    <h3 style="text-align:center;">Section B (iv) – Records Maintenance (Max 10)</h3>
+
+    <form method="post">
+
+        <label><input type="checkbox" name="lesson_plan"> Lesson Plan</label><br>
+        <label><input type="checkbox" name="question_bank"> Question Bank</label><br>
+        <label><input type="checkbox" name="attendance_register"> Attendance Register</label><br>
+        <label><input type="checkbox" name="assignments"> Assignments</label><br>
+        <label><input type="checkbox" name="course_notes"> Course Notes</label><br>
+        <label><input type="checkbox" name="lab_records"> Lab Records</label><br>
+        <label><input type="checkbox" name="lab_manual"> Lab Manual</label><br>
+        <label><input type="checkbox" name="pedagogy_initiative"> Pedagogy Initiative</label><br>
+        <label><input type="checkbox" name="class_test_copies"> Class Test Copies</label><br>
+        <label><input type="checkbox" name="action_taken"> Action Taken</label><br>
+
+        <br>
+        <button type="submit">Save Records</button>
+
+    </form>
+</div>
+
+
+{% if records_data %}
+<hr>
+<h4>Saved Records</h4>
+
+<table border="1" cellpadding="8">
+<tr>
+<th>Total Marks</th>
+<th>Action</th>
+</tr>
+
+{% for row in records_data %}
+<tr>
+<td>{{ row.total_marks }}</td>
+<td>
+<form action="/delete-records-row/{{ row.id }}" method="post">
+<button type="submit" style="background:red;color:white;">
+Delete
+</button>
+</form>
+</td>
+</tr>
+{% endfor %}
+</table>
+{% endif %}
+ 
+
+<form action="/delete-records" method="post"
+      onsubmit="return confirm('Delete records data?')">
+    <button type="submit" style="background:red;color:white;">
+        ❌ Delete
+    </button>
+</form>
+
+
+{% endblock %}

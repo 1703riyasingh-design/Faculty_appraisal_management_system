@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Faculty Profile
+{% endblock %}
+
+{% block content %}
+<div class="form-card">
+
+    <h3 style="text-align:center;">Faculty Profile</h3>
+
+    <form method="post">
+
+        <div class="form-group">
+            <label>Email ID</label>
+            <input
+                type="email"
+                name="email"
+                value="{{ profile.email if profile else '' }}"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label>Designation</label>
+            <input
+                type="text"
+                name="designation"
+                value="{{ profile.designation if profile else '' }}"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label>Department</label>
+            <input
+                type="text"
+                name="department"
+                value="{{ profile.department if profile else '' }}"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label>Qualification</label>
+            <input
+                type="text"
+                name="qualification"
+                value="{{ profile.qualification if profile else '' }}"
+            >
+        </div>
+
+        <div class="form-group">
+            <label>Specialization</label>
+            <input
+                type="text"
+                name="specialization"
+                value="{{ profile.specialization if profile else '' }}"
+            >
+        </div>
+
+        <div class="form-group">
+            <label>Date of Birth</label>
+            <input
+                type="date"
+                name="dob"
+                value="{{ profile.dob if profile else '' }}"
+            >
+        </div>
+
+        <div class="form-group">
+            <label>Joining Date</label>
+            <input
+                type="date"
+                name="joining_date"
+                value="{{ profile.joining_date if profile else '' }}"
+            >
+        </div>
+
+        <div class="form-group">
+            <label>Phone</label>
+            <input
+                type="text"
+                name="phone"
+                value="{{ profile.phone if profile else '' }}"
+            >
+        </div>
+
+        <button type="submit">Save Profile</button>
+
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="form-card">
+    <h3 style="text-align:center;">
+        Section C (iii) – FDP / SDP / Workshop (20 Marks)
+    </h3>
+
+    <form method="post">
+
+        <div class="form-group">
+            <label>Name of Programme</label>
+            <input type="text" name="programme_name" required>
+        </div>
+
+        <div class="form-group">
+            <label>Duration</label>
+            <input type="text" name="duration" placeholder="e.g. 5 Days / 2 Weeks" required>
+        </div>
+
+        <div class="form-group">
+            <label>Attended / Organized as</label>
+            <select name="role" required>
+                <option value="">Select</option>
+                <option>Attended</option>
+                <option>Organized</option>
+                <option>Resource Person</option>
+                <option>Coordinator</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Organized By (Institute Name)</label>
+            <input type="text" name="institute_name" required>
+        </div>
+
+        <div class="form-group">
+            <label>Marks (0–20)</label>
+            <input type="number" name="marks" min="0" max="20" required>
+        </div>
+
+        <button type="submit">Save FDP</button>
+
+    </form>
+</div>
+
+{% if fdp_data %}
+<hr>
+<h4>Saved FDP Records</h4>
+<table border="1" cellpadding="8">
+<tr>
+<th>Programme</th>
+<th>Role</th>
+<th>Institute</th>
+<th>Marks</th>
+<th>Action</th>
+</tr>
+
+{% for row in fdp_data %}
+<tr>
+<td>{{ row.programme_name }}</td>
+<td>{{ row.role }}</td>
+<td>{{ row.institute_name }}</td>
+<td>{{ row.marks }}</td>
+<td>
+<form action="/delete-fdp/{{ row.id }}" method="post">
+<button style="background:red;color:white;">Delete</button>
+</form>
+</td>
+</tr>
+{% endfor %}
+</table>
+{% endif %}
+
+<br>
+<a href="/section-c/department">
+<button type="button">← Back</button>
+</a>
+
+<a href="/section-c/research">
+<button type="button" style="background:green;color:white;">
+Next →
+</button>
+</a>
+
+{% endblock %}

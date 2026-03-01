@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>AICTE / SWAYAM Course</h3>
+
+<form method="post">
+
+    <input type="text" name="programme_name" placeholder="Programme Name" required>
+<input type="number" name="duration_weeks" placeholder="Duration (weeks)" required>
+<input type="text" name="course_name" placeholder="Course Name" required>
+<input type="text" name="fdp_flag" placeholder="FDP Flag (Yes/No)" required>
+<input type="text" name="certification_category" placeholder="Certification Category" required>
+
+
+    <button type="submit">Save</button>
+
+</form>
+
+{% endblock %}
