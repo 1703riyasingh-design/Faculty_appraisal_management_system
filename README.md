@@ -14,7 +14,7 @@ Faculty Self Appraisal Management System for managing the overall year performan
 - tool - xaamp server, vs code
 
 
-##Screenshorts
+## Screenshorts
 
 <img width="611" height="782" alt="image" src="https://github.com/user-attachments/assets/93f4153c-b4d0-4e69-84b8-78d79e8a9350" />
 <img width="585" height="830" alt="image" src="https://github.com/user-attachments/assets/664151a4-e6b8-433d-8134-b3e49544b8ab" />
